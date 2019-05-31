@@ -30,7 +30,6 @@ public class CorrigirProvasServer {
             enviandoGabarito += gabarito[y].getPergunta() + ";" + gabarito[y].getNumAlternativas() + ";" + gabarito[y].getResposta() + ";";
         }
 
-
         try {
             socket = new DatagramSocket(porta);
 

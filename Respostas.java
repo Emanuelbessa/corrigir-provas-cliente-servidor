@@ -1,5 +1,4 @@
 public class Respostas {
-
   private int pergunta;
   private int numAlternativas;
   private String resposta;

@@ -13,22 +13,17 @@ public class CorrigirProvasThread extends Thread {
         this.quantidadePerguntas = quantidadePerguntas;
     }
 
-
-    
     @Override
     public void run(){
         String[] arrayGabarito = gabarito.split("[;]");
         String teste = new String(pctVeio.getData());
         String[] arrayResposta = teste.split("[;]");
-        //String[] arrayResposta = pctVeio.getData().toString().split("[;]");
-
         String respostaServidor = "";
         int x = 0;
         int countAcertos = 0;
         int countErros = 0;
         for(int i=0;i<quantidadePerguntas;i++){
-            //1;5;VVFFV;2;4;VVVV; - gab
-            //1;5;VVVVV;2;4;FFVV; - resp
+            
             char [] charArrayGabarito = arrayGabarito[x+2].toCharArray();
             char [] charArrayResposta = arrayResposta[x+2].toCharArray();
 
@@ -46,11 +41,10 @@ public class CorrigirProvasThread extends Thread {
             countErros = 0;
         }
 
-        
-
         //respostaServidor
         //EstatisticaProvasThread thread = new EstatisticaProvasThread (respostaServidor);
         //String testandoEstat = respostaServidor;
+        
         byte[] msgVai = respostaServidor.getBytes();
         DatagramPacket pctVai = new DatagramPacket(msgVai, msgVai.length, pctVeio.getAddress(), pctVeio.getPort());
         
