@@ -16,16 +16,16 @@ public class CorrigirProvasThread extends Thread {
     @Override
     public void run(){
         String[] arrayGabarito = gabarito.split("[;]");
-        String teste = new String(pctVeio.getData());
-        String[] arrayResposta = teste.split("[;]");
+        String resp = new String(pctVeio.getData());
+        String[] arrayResposta = resp.split("[;]");
         String respostaServidor = "";
-        int x = 0;
+        int x = 2;
         int countAcertos = 0;
         int countErros = 0;
         for(int i=0;i<quantidadePerguntas;i++){
             
-            char [] charArrayGabarito = arrayGabarito[x+2].toCharArray();
-            char [] charArrayResposta = arrayResposta[x+2].toCharArray();
+            char [] charArrayGabarito = arrayGabarito[x].toCharArray();
+            char [] charArrayResposta = arrayResposta[x].toCharArray();
 
             for(int z=0;z<charArrayGabarito.length;z++){
 
@@ -35,15 +35,11 @@ public class CorrigirProvasThread extends Thread {
                     countErros = countErros+1;
                 }
             }
-            x = i+3;
+            x = x+3;
             respostaServidor += i+1 + ";" + countAcertos + ";" + countErros + ";";
             countAcertos = 0;
             countErros = 0;
         }
-
-        //respostaServidor
-        //EstatisticaProvasThread thread = new EstatisticaProvasThread (respostaServidor);
-        //String testandoEstat = respostaServidor;
         
         byte[] msgVai = respostaServidor.getBytes();
         DatagramPacket pctVai = new DatagramPacket(msgVai, msgVai.length, pctVeio.getAddress(), pctVeio.getPort());

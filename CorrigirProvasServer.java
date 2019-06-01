@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.Scanner; 
 
 public class CorrigirProvasServer {
-
-    public static void main(String[] args) {
+    
+        public static void main(String[] args) {
         int porta = 6789;
         DatagramSocket socket;
         Scanner input = new Scanner(System.in);
@@ -50,9 +50,7 @@ public class CorrigirProvasServer {
             System.err.println("Erro no Socket: " + e.getMessage());
         } catch (IOException e) {
             System.err.println("Erro de IO: " + e.getMessage());
-        }
-
-        
-        
+        }  
     }
+
 }
